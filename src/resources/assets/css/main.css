@@ -529,6 +529,36 @@
 .jfx-snackbar-action {
   -fx-text-fill: #ff4081; }
 
+/**
+ * Created by Aymen Ben Othmen on 12/08/16.
+ */
+.text-primary {
+  -fx-text-fill: #2F65A5; }
+
+.text-success {
+  -fx-text-fill: #01A05E; }
+
+.text-danger {
+  -fx-text-fill: #CE584A; }
+
+.text-dark {
+  -fx-text-fill: #212121; }
+
+.text-white {
+  -fx-text-fill: #E2EAF3; }
+
+.text-warning {
+  -fx-text-fill: #E9AB44; }
+
+.text-success-sec {
+  -fx-text-fill: #99C286; }
+
+.text-info {
+  -fx-text-fill: #627FAE; }
+
+.text-mute {
+  -fx-text-fill: GRAY; }
+
 .toolbar {
   -fx-background-color: #f9ffff;
   -fx-border-width: 0 0 2px 0;
