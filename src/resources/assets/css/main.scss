@@ -1,0 +1,27 @@
+/**
+ * Created by Aymen Ben Othmen on 12/08/16.
+ */
+
+$primary: #2F65A5;
+$info: #627FAE;
+$danger: #CE584A;
+$success: #01A05E;
+$success-sec: #99C286;
+$warning: #E9AB44;
+$dark: #212121;
+$white: #E2EAF3;
+$mute: GRAY;
+
+@import "parts/button";
+//@import "parts/dialog";
+@import "parts/form";
+@import "parts/icon";
+@import "parts/list-view";
+@import "parts/main";
+@import "parts/pop-up";
+//@import "parts/progress-bar";
+//@import "parts/scroll-bar";
+//@import "parts/scroll-pane";
+//@import "parts/spinner";
+@import "parts/tool-bar";
+@import "parts/tree-table-view";

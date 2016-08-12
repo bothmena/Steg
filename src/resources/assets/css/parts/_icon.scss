@@ -1,0 +1,52 @@
+.icon{
+    -fx-text-fill: #FE774D;
+    -fx-padding: 10.0;
+    -fx-cursor: hand;
+}
+
+.icons-rippler{
+    -fx-rippler-fill: #FE774D;
+    -fx-mask-type: CIRCLE;
+}
+
+.icons-rippler1{
+    -fx-rippler-fill: #4285F4;
+    -fx-mask-type: CIRCLE;
+}
+
+.icons-rippler:hover{
+    -fx-cursor: hand;
+}
+
+.animated-burgers .jfx-hamburger StackPane{
+    -fx-background-color:#5264AE;
+    -fx-background-radius:4px;
+}
+
+.icons-badge .badge-pane {
+    -fx-background-color:#ff4081;
+    -fx-background-radius: 23;
+    -fx-pref-width: 23;
+    -fx-pref-height: 23;
+    -fx-alignment: center;
+}
+
+.icons-badge Label{
+    -fx-font-weight: BOLD;
+    -fx-font-size: 14.0px;
+    -fx-text-fill: WHITE;
+}
+
+/**
+ * Style.css
+ */
+
+.config-btn-icon {
+       -fx-text-fill: white;
+   }
+.my-icon {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #212121;
+    -fx-padding: 0.0;
+    -fx-cursor: hand;
+}

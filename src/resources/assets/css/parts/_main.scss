@@ -1,0 +1,115 @@
+@font-face {
+    font-family: Roboto;
+    src: url("../roboto/Roboto-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto Medium";
+    src: url("../roboto/Roboto-Medium.ttf");
+}
+@font-face {
+    font-family: "Roboto Light";
+    src: url("../roboto/Roboto-Light.ttf");
+}
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../roboto/Roboto-Bold.ttf");
+}
+.root {
+    -fx-font-family: "Roboto";
+    -fx-text-fill: $dark;
+    -fx-background-color: $white * 1.5;
+}
+
+/**
+ * JFX DECORATOR
+ */
+
+.jfx-decorator {
+    -fx-decorator-color: $primary;
+    .jfx-decorator-buttons-container {
+        -fx-background-color: $primary;
+    }
+    .resize-border{
+        -fx-border-color: $primary;
+        -fx-border-width: 0 3 3 3;
+    }
+}
+
+/**
+ * JFX DRAWER
+ */
+
+.jfx-drawer-overlay-pane {
+    -fx-background-color: rgba(0.0,0.0,0.0,0.1)
+}
+.jfx-drawer-side-pane {
+    -fx-background-color: WHITE;
+}
+
+.back-primary {
+    -fx-background-color: $primary * 0.7;
+}
+.back-danger {
+    -fx-background-color: $danger * 0.7;
+}
+.back-success {
+    -fx-background-color: $success * 0.7;
+}
+.back-success-secondary {
+    -fx-background-color: $success-sec * 0.7;
+}
+.back-info {
+    -fx-background-color: $info * 0.7;
+}
+.back-white {
+    -fx-background-color: $white * 0.7;
+}
+.back-dark {
+    -fx-background-color: $dark * 0.7;
+}
+
+/**
+ * JFX Rippler
+ */
+
+.jfx-rippler {
+    -fx-rippler-fill: $primary;
+    -fx-mask-type: RECT;
+}
+.jfx-rippler:hover {
+    -fx-cursor: hand;
+}
+
+/**
+ * Style.css
+ */
+
+.side-menu .nodes-list-closed {
+
+    -fx-background-color: #00bfa5;
+    -fx-max-height: 30px;
+    -fx-pref-height: 30px;
+}
+.side-menu .nodes-list-open {
+
+    -fx-background-color: #FFFFFF;
+    -fx-max-height: 30px;
+    -fx-pref-height: 30px;
+}
+
+/*.side-menu{
+    -fx-padding: 20.0,10.0;
+    -fx-font-size: 15.0;
+    -fx-font-weight: NORMAL;
+    -fx-text-fill: #444;
+}
+.title-label{
+    -fx-font-size: 16.0px;
+    -fx-padding	: 14.0px;
+    -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
+}
+.radio-button-title-label {
+    -fx-font-size: 16.0px;
+    -fx-padding	: 14.0 0.0 -20.0 0.0;
+    -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
+}*/

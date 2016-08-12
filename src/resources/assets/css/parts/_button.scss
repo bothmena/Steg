@@ -1,0 +1,167 @@
+$btn-font-size: 14px;
+$btn-text-color: $white;
+$btn-text-color-inverse: $dark;
+$btn-height: 34px;
+$hover-factor: 1.2;
+
+.btn {
+    -fx-pref-height: $btn-height;
+    -fx-font-size: $btn-font-size;
+    -fx-text-fill: $btn-text-color;
+}
+
+.btn-primary {
+    @extend .btn;
+    -fx-background-color: $primary;
+}
+.btn-primary:hover {
+    -fx-background-color: $primary * $hover-factor;
+}
+
+.btn-info {
+    @extend .btn;
+    -fx-background-color: $info;
+}
+.btn-info:hover {
+    -fx-background-color: $info * $hover-factor;
+}
+
+.btn-danger {
+    @extend .btn;
+    -fx-background-color: $danger;
+}
+.btn-danger:hover {
+    -fx-background-color: $danger * $hover-factor;
+}
+
+.btn-success {
+    @extend .btn;
+    -fx-background-color: $success;
+}
+.btn-success:hover {
+    -fx-background-color: $success * $hover-factor;
+}
+
+.btn-success-sec {
+    @extend .btn;
+    -fx-background-color: $success-sec;
+}
+.btn-success-sec:hover {
+    -fx-background-color: $success-sec * $hover-factor;
+}
+
+.btn-warning {
+    @extend .btn;
+    -fx-background-color: $warning;
+}
+.btn-warning:hover {
+    -fx-background-color: $warning * $hover-factor;
+}
+
+.btn-dark {
+    @extend .btn;
+    -fx-background-color: $dark;
+}
+.btn-dark:hover {
+    -fx-background-color: $dark * $hover-factor;
+}
+
+.btn-white {
+    -fx-font-size: $btn-font-size;
+    -fx-text-fill: $btn-text-color-inverse;
+    -fx-background-color: $white;
+}
+.btn-white:hover {
+    -fx-background-color: $white * $hover-factor;
+}
+.btn-raised {
+    -fx-button-type: RAISED;
+}
+.btn-flat {
+    -fx-button-type: FLAT;
+}
+
+/**
+ * JFX Toggle Button
+ */
+
+.jfx-toggle-button{
+    -fx-toggle-color: $success;
+}
+.btn-toggle-primary {
+    -fx-toggle-color: $primary;
+}
+.btn-toggle-info {
+    -fx-toggle-color: $info;
+}
+.btn-toggle-danger {
+    -fx-toggle-color: $danger;
+}
+.btn-toggle-success {
+    -fx-toggle-color: $success;
+}
+.btn-toggle-success-sec {
+    -fx-toggle-color: $success-sec;
+}
+.btn-toggle-warning {
+    -fx-toggle-color: $warning;
+}
+.btn-toggle-dark {
+    -fx-toggle-color: $dark;
+}
+
+/*.custom-jfx-toggle-button-red{
+    -fx-toggle-color:red;
+}
+
+.toggle-label {
+    -fx-font-size: 14.0px;
+}
+
+.toggle-icon1 .icon{
+    -fx-text-fill: #4285F4;
+    -fx-padding:20.0;
+}
+
+.toggle-icon1{
+    -fx-pref-width: 80px;
+    -fx-background-radius:80px;
+    -fx-pref-height: 80px;
+    -fx-background-color:transparent;
+    -fx-selected-color:rgba(66.0,133.0,244.0,0.29885056614875793);
+    -fx-unselected-color:transparent;
+}
+
+.toggle-icon1 .jfx-rippler{
+    -fx-rippler-fill: rgba(66.0,133.0,244.0,0.29885056614875793);
+    -fx-mask-type: CIRCLE;
+}
+
+.toggle-icon2, .toggle-icon3{
+    -fx-pref-width: 50px;
+    -fx-background-radius: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-color:transparent ;
+}
+
+.toggle-icon3{
+    -fx-selected-color: rgba(128,128,255, 0.2);
+    -fx-unselected-color:transparent;
+}
+
+
+.toggle-icon2 .icon{
+    -fx-text-fill: RED;
+}
+.toggle-icon2 .jfx-rippler{
+    -fx-rippler-fill: RED;
+    -fx-mask-type: CIRCLE;
+}
+.toggle-icon3 .icon{
+    -fx-text-fill: rgb(204.0,204.0,51.0);
+    -fx-padding:10.0;
+}
+.toggle-icon3 .jfx-rippler{
+    -fx-rippler-fill: #0F9D58;
+    -fx-mask-type: CIRCLE;
+}*/

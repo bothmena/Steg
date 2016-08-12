@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bothmena</groupId>
-    <artifactId>data-fx</artifactId>
+    <artifactId>steg</artifactId>
     <name>STEG</name>
     <version>1.0-SNAPSHOT</version>
     <organization>
@@ -34,7 +34,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.1.4</version>
                 <configuration>
-                    <mainClass>com.bothmena.Main</mainClass>
+                    <mainClass>com.bothmena.main.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -46,6 +46,11 @@
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>1.4.6</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
         </dependency>
 
         <dependency>

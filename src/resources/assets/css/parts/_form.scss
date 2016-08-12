@@ -1,0 +1,169 @@
+/**
+ * JFX Radio Button
+ */
+
+.jfx-radio-button .radio {
+    -fx-stroke-width: 2.0px;
+    -fx-fill: transparent;
+}
+
+.jfx-radio-button .dot {
+    -fx-fill: $success;
+}
+
+.custom-jfx-radio-button{
+    -fx-font-size: 16.0px;
+}
+
+.custom-jfx-radio-button .radio {
+    -fx-stroke-width: 2.0px;
+    -fx-fill: transparent;
+}
+
+.custom-jfx-radio-button .dot {
+    -fx-fill: $primary;
+}
+
+/**
+ * JFX Slider
+ */
+
+.svg-slider .thumb{
+    -fx-stroke : black;
+    -fx-fill : black;
+}
+.jfx-slider:disabled {
+    -fx-opacity: 0.4;
+}
+
+/**
+ * For the main demo sliders
+ */
+
+.jfx-slider-style {
+    -fx-indicator-position: right;
+}
+
+.jfx-slider-style > .thumb {
+    -fx-background-color: $info;
+}
+
+.jfx-slider-style .track {
+    -fx-background-color: $danger;
+    -fx-pref-height: 5px;
+    -fx-pref-width: 5px;
+}
+
+.jfx-slider-style .sliderValue {
+    -fx-stroke: $white;
+    -fx-font-size: 10.0;
+}
+
+/**
+ * JFX Check Box
+ */
+
+.jfx-check-box{
+    -fx-font-weight: BOLD;
+}
+
+.custom-jfx-check-box{
+    -fx-checked-color: $success;
+    -fx-unchecked-color: $danger;
+}
+
+.custom-jfx-check-box-all-colored{
+    -fx-checked-color: $primary;
+    -fx-unchecked-color: $primary;
+    -fx-text-fill: $primary;
+}
+
+.custom-jfx-check-box-text-colored{
+    -fx-text-fill: $danger;
+}
+
+/**
+ * JFX Textfield
+ */
+
+.jfx-text-field, .jfx-password-field, .jfx-text-area{
+    -fx-background-color: transparent ;
+    -fx-font-weight: BOLD;
+    -fx-prompt-text-fill: $mute;
+    -fx-alignment: top-left ;
+    //-fx-max-width: 300.0;
+    -fx-pref-width:300.0;
+    -fx-focus-color: $primary;
+    -fx-unfocus-color: $mute;//#4d4d4d;
+}
+
+.jfx-text-field:error , .jfx-password-field:error , .jfx-text-area:error {
+    -fx-focus-color: $danger;
+    -fx-unfocus-color: $danger;
+}
+
+.jfx-text-field .errorLabel, .jfx-password-field .errorLabel, .jfx-text-area .errorLabel{
+    -fx-text-fill : $danger;
+    -fx-font-size: 0.75em;
+}
+.jfx-text-field .errorIcon, .jfx-password-field .errorIcon , .jfx-text-area .errorIcon{
+    -fx-text-fill : $danger;
+    -fx-font-size: 1.0em;
+}
+
+.jfx-text-area .viewport{
+    -fx-background-color: $white;
+}
+
+/**
+ * JFX Combo Box
+ */
+
+.combo-box-popup .list-view .jfx-list-cell .label {
+    -fx-text-fill: $dark;
+}
+.combo-box-popup .list-view .jfx-list-cell .custom-jfx-list-view-icon {
+    -fx-text-fill: $primary;
+    -fx-padding: 0.0 10.0 0.0 5.0  ;
+    -fx-cursor: hand;
+}
+.combo-box-popup .list-view .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
+.combo-box-popup .list-view .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
+    -fx-background-color: $primary;
+}
+.combo-box-popup .list-view .jfx-list-cell {
+    -fx-background-insets: 0.0 ;
+    -fx-text-fill: $dark;
+}
+.combo-box-popup .list-view .jfx-list-cell:odd,
+.combo-box-popup .list-view .jfx-list-cell:even {
+    -fx-background-color:  $white;
+}
+.combo-box-popup .list-view .jfx-list-cell:filled:hover .label{
+    -fx-text-fill: $dark;
+}
+.combo-box-popup .list-view .jfx-list-cell:filled:hover .custom-jfx-list-view-icon {
+    -fx-text-fill: $primary;
+}
+.combo-box-popup .list-view .jfx-list-cell .jfx-rippler {
+    -fx-rippler-fill: $primary;
+}
+
+/**
+ * Error Facade
+ */
+
+.jfx-combo-box:error .combo-box-button-container {
+    -fx-border-color: $danger;
+    -fx-border-width: 0 0 2 0;
+}
+
+.label.errorLabel {
+    -fx-text-fill :  $danger;
+    -fx-font-size: 0.75em;
+    -fx-font-weight: bold;
+}
+.errorIcon {
+    -fx-text-fill :  $danger;
+    -fx-font-size: 1.0em;
+}
