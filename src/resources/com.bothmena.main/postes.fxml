@@ -38,9 +38,12 @@
         </HBox>
         <JFXTreeTableView fx:id="table">
             <columns>
-                <JFXTreeTableColumn fx:id="name" prefWidth="200" resizable="true" text="Name" />
-                <JFXTreeTableColumn fx:id="type" prefWidth="200" resizable="true" text="Type" />
-                <JFXTreeTableColumn fx:id="marque" prefWidth="200" resizable="true" text="Marque" />
+                <JFXTreeTableColumn fx:id="name" resizable="true" text="Name" />
+                <JFXTreeTableColumn fx:id="type" resizable="true" text="Type" />
+                <JFXTreeTableColumn fx:id="marque" resizable="true" text="Marque" />
+                <JFXTreeTableColumn fx:id="ptr" resizable="true" text="P. TR" />
+                <JFXTreeTableColumn fx:id="tele" resizable="true" text="Tele BCC" />
+                <JFXTreeTableColumn fx:id="observation" resizable="true" text="Observation" />
             </columns>
         </JFXTreeTableView>
     </VBox>

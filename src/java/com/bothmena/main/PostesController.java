@@ -1,5 +1,6 @@
 package com.bothmena.main;
 
+import com.bothmena.entity.Depart;
 import com.bothmena.entity.Poste;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
@@ -19,28 +20,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableColumn.CellEditEvent;
 import javafx.scene.layout.VBox;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import javax.annotation.PostConstruct;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @FXMLController(value = "/com.bothmena.main/postes.fxml")
 public class PostesController {
 
+    SessionFactory sessionFactory = Main.getSessionFactory();
 	@FXML
     JFXTreeTableView<Poste> table;
 //	@FXML JFXTreeTableColumn<Poste, Integer> id;
-	@FXML
-JFXTreeTableColumn<Poste, String> name;
-	@FXML
-    JFXTreeTableColumn<Poste, String> type;
-	@FXML
-    JFXTreeTableColumn<Poste, String> marque;
-/*	@FXML JFXTreeTableColumn<Poste, String> ptr;
+	@FXML JFXTreeTableColumn<Poste, String> name;
+	@FXML JFXTreeTableColumn<Poste, String> type;
+	@FXML JFXTreeTableColumn<Poste, String> marque;
+	@FXML JFXTreeTableColumn<Poste, String> ptr;
 	@FXML JFXTreeTableColumn<Poste, String> tele;
-	@FXML JFXTreeTableColumn<Poste, String> observation;*/
+	@FXML JFXTreeTableColumn<Poste, String> observation;
 
 	@FXML
-    Label postesCount;
+    private Label postesCount;
 	@FXML
     JFXTextField searchField;
     @FXML
@@ -49,17 +53,6 @@ JFXTreeTableColumn<Poste, String> name;
 	@PostConstruct
 	public void init() throws FlowException, VetoException {
 
-		String[] names = { "Morley", "Scott", "Kruger", "Lain",
-				"Kennedy", "Gawron", "Han", "Hall", "Aydogdu", "Grace",
-				"Spiers", "Perera", "Smith", "Connoly",
-				"Sokolowski", "Chaow", "James", "June" };
-
-        String[] types = { "Standard", "Smart", "Automatique", "Manuel" };
-
-        String[] marques = { "Motorella", "Sony", "Samsung", "LapTop", "Downside", "BlownUp", "Hatchu" };
-		Random random = new Random();
-		
-		
 		name.setCellValueFactory((TreeTableColumn.CellDataFeatures<Poste, String> param) ->{
 			if(name.validateValue(param))
 			    return param.getValue().getValue().getNameProperty();
@@ -78,8 +71,27 @@ JFXTreeTableColumn<Poste, String> name;
 			else
 			    return marque.getComputedValue(param);
 		});
+        ptr.setCellValueFactory((TreeTableColumn.CellDataFeatures<Poste, String> param) ->{
+            if(ptr.validateValue(param))
+                return param.getValue().getValue().getPtrProperty();
+            else
+                return ptr.getComputedValue(param);
+        });
+        tele.setCellValueFactory((TreeTableColumn.CellDataFeatures<Poste, String> param) ->{
+            if(tele.validateValue(param))
+                return param.getValue().getValue().getTeleProperty();
+            else
+                return tele.getComputedValue(param);
+        });
+        observation.setCellValueFactory((TreeTableColumn.CellDataFeatures<Poste, String> param) ->{
+            if(observation.validateValue(param))
+                return param.getValue().getValue().getObservationProperty();
+            else
+                return observation.getComputedValue(param);
+        });
+
 		// add editors
-		name.setCellFactory((TreeTableColumn<Poste, String> param) -> new GenericEditableTreeTableCell<>(new TextFieldEditorBuilder()));
+		/*name.setCellFactory((TreeTableColumn<Poste, String> param) -> new GenericEditableTreeTableCell<>(new TextFieldEditorBuilder()));
 		name.setOnEditCommit(
 				( CellEditEvent<Poste, String> t ) ->
 						t.getTreeTableView().getTreeItem( t.getTreeTablePosition().getRow() ).getValue().setName( t.getNewValue() )
@@ -89,17 +101,19 @@ JFXTreeTableColumn<Poste, String> name;
 
         marque.setCellFactory((TreeTableColumn<Poste, String> param) -> new GenericEditableTreeTableCell<>(new TextFieldEditorBuilder()));
 		marque.setOnEditCommit((CellEditEvent<Poste, String> t)-> t.getTreeTableView().getTreeItem(t.getTreeTablePosition().getRow()).getValue().setMarque(t.getNewValue()));
-
+*/
 
 		ObservableList<Poste> list = FXCollections.observableArrayList();
-		for (int i = 0; i < 200; i++) {
-            list.add(
-                new Poste(
-                    names[random.nextInt(names.length)],
-                    types[random.nextInt(types.length)],
-                    marques[random.nextInt(marques.length)]
-                )
-            );
+        if( Main.getDepartId() > 0 ) {
+            Session session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            Depart depart = session.get(Depart.class, Main.getDepartId());
+            Set<Poste> postes = depart.getPostes();
+            Iterator<Poste> iterator = postes.iterator();
+            while (iterator.hasNext()) {
+                list.add(iterator.next());
+            }
+            session.close();
         }
 
 		table.setRoot(new RecursiveTreeItem<>(list, RecursiveTreeObject::getChildren));
@@ -107,17 +121,25 @@ JFXTreeTableColumn<Poste, String> name;
 		table.setEditable(true);
 		postesCount.textProperty().bind(Bindings.createStringBinding(()-> "( " + table.getCurrentItemsCount()+" )", table.currentItemsCountProperty()));
 		searchField.textProperty().addListener((o, oldVal, newVal)->{
+		    String lowerCased = newVal.toLowerCase();
 			table.setPredicate(Poste ->
-                    Poste.getValue().getName().contains( newVal ) ||
-                    Poste.getValue().getType().contains( newVal ) ||
-                    Poste.getValue().getMarque().contains( newVal )
+                    Poste.getValue().getName().toLowerCase().contains( lowerCased ) ||
+                    Poste.getValue().getType().toLowerCase().contains( lowerCased ) ||
+                    Poste.getValue().getMarque().toLowerCase().contains( lowerCased ) ||
+                    Poste.getValue().getPtr().toLowerCase().contains( lowerCased ) ||
+                    Poste.getValue().getTeleToString().toLowerCase().contains( lowerCased ) ||
+                    Poste.getValue().getMarque().toLowerCase().contains( lowerCased )
             );
 		});
 
         vBox.widthProperty().addListener( (observable, oldValue, newValue) -> {
-            name.setPrefWidth( ( newValue.doubleValue() - 18 ) * 0.4 );
-            type.setPrefWidth( ( newValue.doubleValue() - 18 ) * 0.3 );
-            marque.setPrefWidth( ( newValue.doubleValue() - 18 ) * 0.3 );
+            double width = newValue.doubleValue() - 5;
+            name.setPrefWidth( width * 0.2 );
+            type.setPrefWidth( width * 0.15 );
+            marque.setPrefWidth( width * 0.15 );
+            ptr.setPrefWidth( width * 0.1 );
+            tele.setPrefWidth( width * 0.1 );
+            observation.setPrefWidth( width * 0.3 );
             vBox.setPrefHeight( vBox.getHeight() );
         } );
 	}

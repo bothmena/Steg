@@ -9,7 +9,9 @@ import io.datafx.controller.FXMLController;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import io.datafx.controller.util.VetoException;
 import javafx.fxml.FXML;
@@ -31,17 +33,18 @@ public class SideMenuController {
     SessionFactory sessionFactory = Main.getSessionFactory();
 	@FXMLViewFlowContext
     private ViewFlowContext context;
+    @ActionHandler
+    private FlowActionHandler actionHandler;
+    private Flow contentFlow;
+    private FlowHandler contentFlowHandler;
     @FXML
     private StackPane stackPane;
 
 	@PostConstruct
 	public void init() throws FlowException, VetoException {
 
-        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
-		FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
-
-		/*bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);
-        bindNodeToController(icons, IconsController.class, contentFlow, contentFlowHandler);*/
+        contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
 
         fillListView( 0 );
 	}
@@ -112,20 +115,11 @@ public class SideMenuController {
 
     public void departListener( Depart depart ) {
 
-        System.out.println( "--> Depart selected: " + depart.getName() );
+        try {
+            Main.setDepartId( depart.getId() );
+            contentFlowHandler.navigateTo( PostesController.class );
+        } catch (VetoException | FlowException e) {
+            e.printStackTrace();
+        }
     }
-
-	private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow, FlowHandler flowHandler) {
-		flow.withGlobalLink(node.getId(), controllerClass);
-		node.setOnMouseClicked( (e) -> {
-			try {				
-				flowHandler.handle(node.getId());				
-			} catch (Exception e1) {
-                System.out.println("---------------------------------------------->>>>>");
-				e1.printStackTrace();
-                System.out.println("<<<<<----------------------------------------------");
-            }
-		} );
-	}
-
 }

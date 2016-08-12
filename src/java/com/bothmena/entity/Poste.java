@@ -1,10 +1,13 @@
 package com.bothmena.entity;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import javax.persistence.*;
+import java.util.Hashtable;
 
 /**
  * Created by Aymen Ben Othmen on 19/07/16.
@@ -65,6 +68,10 @@ public class Poste extends RecursiveTreeObject<Poste> {
         this.tele = tele;
     }
 
+    public IntegerProperty getIdProperty() {
+        return new SimpleIntegerProperty(this.id);
+    }
+
     public StringProperty getNameProperty() {
         return new SimpleStringProperty(this.name);
     }
@@ -75,6 +82,18 @@ public class Poste extends RecursiveTreeObject<Poste> {
 
     public StringProperty getMarqueProperty() {
         return new SimpleStringProperty(this.marque);
+    }
+
+    public StringProperty getPtrProperty() {
+        return new SimpleStringProperty(this.ptr);
+    }
+
+    public StringProperty getTeleProperty() {
+        return new SimpleStringProperty( getTeleToString() );
+    }
+
+    public StringProperty getObservationProperty() {
+        return new SimpleStringProperty(this.observation);
     }
 
     public int getId() {
@@ -151,5 +170,9 @@ public class Poste extends RecursiveTreeObject<Poste> {
 
     public void setNextPoste(Poste nextPoste) {
         this.nextPoste = nextPoste;
+    }
+
+    public String getTeleToString() {
+        return this.tele ? "Oui" : "Non";
     }
 }

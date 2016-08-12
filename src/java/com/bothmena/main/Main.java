@@ -1,5 +1,7 @@
 package com.bothmena.main;
 
+import com.bothmena.entity.Depart;
+import com.bothmena.entity.Region;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.flow.Flow;
@@ -23,6 +25,7 @@ public class Main extends Application {
     private ViewFlowContext flowContext;
     private static final SessionFactory sessionFactory =
             new Configuration().configure("/hibernate.cfg.xml").buildSessionFactory();
+    private static int departId = 0;
 
     public static void main(String[] args) {
         launch(args);
@@ -63,6 +66,14 @@ public class Main extends Application {
         primaryStage.setTitle("STEG Departs & Postes");
         primaryStage.show();
 
+    }
+
+    public static int getDepartId() {
+        return departId;
+    }
+
+    public static void setDepartId(int departId) {
+        Main.departId = departId;
     }
 
     public static SessionFactory getSessionFactory() {
