@@ -37,7 +37,7 @@
 }
 
 /**
- * For the main demo sliders
+ * For the com.bothmena demo sliders
  */
 
 .jfx-slider-style {
@@ -85,6 +85,11 @@
 /**
  * JFX Textfield
  */
+
+.form-error {
+    -fx-text-fill: $danger;
+    -fx-wrap-text: true;
+}
 
 .jfx-text-field, .jfx-password-field, .jfx-text-area{
     -fx-background-color: transparent ;

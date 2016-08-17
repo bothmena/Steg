@@ -1,7 +1,5 @@
 package com.bothmena.main;
 
-import com.bothmena.entity.Depart;
-import com.bothmena.entity.Region;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.flow.Flow;
@@ -25,7 +23,7 @@ public class Main extends Application {
     private ViewFlowContext flowContext;
     private static final SessionFactory sessionFactory =
             new Configuration().configure("/hibernate.cfg.xml").buildSessionFactory();
-    private static int departId = 0;
+    private static Stage stage;
 
     public static void main(String[] args) {
         launch(args);
@@ -34,6 +32,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        stage = primaryStage;
         new Thread(()->{
             try {
                 SVGGlyphLoader.loadGlyphsFont(Main.class.getResourceAsStream("/fonts/icomoon.svg"),"icomoon.svg");
@@ -43,37 +42,35 @@ public class Main extends Application {
             }
         }).start();
 
-        Flow flow = new Flow(HomeController.class);
+        //Flow flow = new Flow(HomeController.class);
+        Flow flow = new Flow(MainController.class);
         DefaultFlowContainer container = new DefaultFlowContainer();
         flowContext = new ViewFlowContext();
-        flowContext.register("Stage", primaryStage);
+        flowContext.register("Stage", stage);
         flow.createHandler(flowContext).start(container);
 
-        JFXDecorator decorator = new JFXDecorator(primaryStage, container.getView(), false, true, true);
-        decorator.setOnCloseButtonAction( () -> {
-            try {
-                sessionFactory.close();
-            } catch (NullPointerException e) {
-                System.out.println(e);
-            }
-            primaryStage.close();
-        } );
+        JFXDecorator decorator = new JFXDecorator(stage, container.getView()/*, false, true, true*/);
+        decorator.setOnCloseButtonAction( () -> closeStage() );
+        decorator.setCustomMaximize(true);
 
         Scene scene = new Scene(decorator, 1000, 600);
-        scene.getStylesheets().add(Main.class.getResource("/assets/css/main.min.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image("/assets/images/icon.jpg"));
-        primaryStage.setTitle("STEG Departs & Postes");
-        primaryStage.show();
-
+        //scene.getStylesheets().add(Main.class.getResource("/assets/css/main.min.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("/assets/css/jfoenix-fonts.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("/assets/css/jfoenix-design.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("/assets/css/jfoenix-main-demo.css").toExternalForm());
+        stage.setScene(scene);
+        stage.getIcons().add(new Image("/assets/images/icon.jpg"));
+        stage.setTitle("STEG Departs & Postes");
+        stage.show();
     }
 
-    public static int getDepartId() {
-        return departId;
-    }
-
-    public static void setDepartId(int departId) {
-        Main.departId = departId;
+    static void closeStage() {
+        try {
+            sessionFactory.close();
+        } catch (NullPointerException e) {
+            System.out.println(e);
+        }
+        stage.close();
     }
 
     public static SessionFactory getSessionFactory() {

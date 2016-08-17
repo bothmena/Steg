@@ -1,5 +1,7 @@
 package com.bothmena.entity;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.hibernate.Session;
 
 import javax.persistence.*;
@@ -48,6 +50,10 @@ public class Depart {
 
     public String getName() {
         return name;
+    }
+
+    public StringProperty getNameProperty() {
+        return new SimpleStringProperty(name);
     }
 
     public void setName(String name) {

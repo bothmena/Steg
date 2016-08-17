@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:controller="com.bothmena.dialog.DepartDialog" styleClass="dialog" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox styleClass="dialog-header" BorderPane.alignment="CENTER">
+            <Label text="Nouvelle Ligne"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox styleClass="dialog-body">
+            <JFXTextField fx:id="name" labelFloat="true" promptText="Nom du depart" />
+            <JFXComboBox fx:id="region" prefWidth="500.0" promptText="Region" VBox.vgrow="ALWAYS" />
+            <Label fx:id="logLabel" styleClass="form-error" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </center>
+</BorderPane>

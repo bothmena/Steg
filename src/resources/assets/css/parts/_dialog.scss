@@ -1,9 +1,67 @@
+$dialog-border: #DDDDDD;
+
+.dialog-pane.root {
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: $dialog-border;
+    -fx-min-width: 500px;
+    -fx-border-width: 3px;
+    -fx-padding: 0px;
+    .dialog {
+        -fx-padding: 0px;
+    }
+    .dialog-header {
+        -fx-padding: 10px 20px;
+        -fx-background-color: $dialog-border;
+        -fx-alignment: top-center;
+        .label {
+            -fx-text-fill: $primary;
+            -fx-font-size: 25px;
+        }
+    }
+    .dialog-body {
+        -fx-alignment: center;
+        -fx-min-height: 200px;
+        -fx-spacing: 20px;
+        -fx-padding: 30px 20px;
+    }
+    .button-bar {
+        * {
+            -fx-background-color: $dialog-border;
+            -fx-padding: 10px 10px;
+            .btn-primary {
+                -fx-background-color: $primary;
+            }
+            .btn-primary:hover {
+                -fx-background-color: $primary * 1.2;
+            }
+            .btn-mute {
+                -fx-background-color: $mute;
+            }
+            .btn-mute:hover {
+                -fx-background-color: $mute * 1.2;
+            }
+            .btn-danger {
+                -fx-background-color: $danger;
+            }
+            .btn-danger:hover {
+                -fx-background-color: $danger * 1.2;
+            }
+            .button {
+                -fx-font-size: 12px;
+            }
+        }
+    }
+}
+
+
 .jfx-dialog-overlay-pane {
-    -fx-background-color: rgba(0.0,0.0,0.0,0.1);
+    -fx-background-color: $dark;
+    -fx-opacity: 0.1;
 }
 
 .dialog-trigger{
-    -fx-background-color: WHITE;
+    -fx-background-color: $white;
     -fx-button-type:RAISED;
     -fx-font-size: 14.0px;
 }
@@ -29,8 +87,15 @@
     -fx-padding: 10.0px 0.0 0.0 0.0 ;
     -fx-alignment: center-right ;
 }
-.dialog-accept{
-    -fx-text-fill: #03A9F4;
+.dialog-confirm{
+    -fx-text-fill: $primary; //#03A9F4;
+    -fx-background-color: $success-sec;
+    -fx-font-weight: BOLD;
+    -fx-padding: 0.7em 0.8em;
+}
+.dialog-cancel{
+    -fx-text-fill: $primary; //#03A9F4;
+    -fx-background-color: $white;
     -fx-font-weight: BOLD;
     -fx-padding: 0.7em 0.8em;
 }

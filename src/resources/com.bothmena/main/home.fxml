@@ -8,7 +8,8 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.control.Label?>
 <?import de.jensd.fx.fontawesome.Icon?>
-
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import com.jfoenix.controls.JFXDialog?>
 
 <VBox fx:id="homeRoot" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
     <HBox styleClass="toolbar">
@@ -107,4 +108,25 @@
             </Label>
         </JFXListView>
     </JFXPopup>
+
+    <JFXDialog transitionType="CENTER" fx:id="dialog">
+        <JFXDialogLayout fx:id="layout">
+            <heading>
+                <Label>JFoenix Dialog</Label>
+            </heading>
+            <body>
+                <Label>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat.
+                </Label>
+            </body>
+            <actions>
+                <HBox alignment="CENTER_RIGHT" spacing="10" >
+                    <JFXButton fx:id="confirm" buttonType="RAISED" styleClass="dialog-confirm">Sauvegarder</JFXButton>
+                    <JFXButton fx:id="cancel" buttonType="RAISED" styleClass="dialog-cancel">Annuler</JFXButton>
+                </HBox>
+            </actions>
+        </JFXDialogLayout>
+    </JFXDialog>
 </VBox>

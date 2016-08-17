@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.fontawesome.Icon?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXPopup?>
+
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+	<!-- Header -->
+	<BorderPane>
+
+		<top>
+			<VBox spacing="20">
+				<JFXToolbar>
+					<leftItems>
+						<JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+							<StackPane fx:id="titleBurgerContainer">
+								<JFXHamburger fx:id="titleBurger">
+									<HamburgerBackArrowBasicTransition />
+								</JFXHamburger>
+							</StackPane>
+						</JFXRippler>
+						<Label>STEG Suivies Des Departs</Label>
+					</leftItems>
+					<rightItems>
+                        <HBox fx:id="rightBox" style="-fx-padding: 5px;" alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS"><!--styleClass="right-box"-->
+                            <JFXRippler fx:id="configRippler">
+                                <StackPane fx:id="configBurger" style="-fx-max-height: 30px;-fx-background-color: #00b0ff;-fx-padding: 5px 10px;-fx-background-radius: 3px; -fx-border-radius: 3px;">
+                                    <Label text="Configuration" style="-fx-font-size: 14px;-fx-font-weight: 500;">
+                                        <graphic>
+                                            <Icon awesomeIcon="CARET_DOWN" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;" styleClass="tb-option-icon" />
+                                        </graphic>
+                                    </Label>
+                                </StackPane>
+                            </JFXRippler>
+                            <JFXRippler fx:id="regionRippler">
+                                <StackPane fx:id="regionBurger" style="-fx-max-height: 30px;-fx-background-color: #00b0ff;-fx-padding: 5px 10px;-fx-background-radius: 3px; -fx-border-radius: 3px;">
+                                    <Label text="Region" style="-fx-font-size: 14px;-fx-font-weight: 500;">
+                                        <graphic>
+                                            <Icon awesomeIcon="CARET_DOWN" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;" styleClass="tb-option-icon" />
+                                        </graphic>
+                                    </Label>
+                                </StackPane>
+                            </JFXRippler>
+                            <JFXRippler fx:id="departRippler">
+                                <StackPane fx:id="departBurger" style="-fx-max-height: 30px;-fx-background-color: #00b0ff;-fx-padding: 5px 10px;-fx-background-radius: 3px; -fx-border-radius: 3px;">
+                                    <Label text="Départ" style="-fx-font-size: 14px;-fx-font-weight: 500;">
+                                        <graphic>
+                                            <Icon awesomeIcon="CARET_DOWN" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;" styleClass="tb-option-icon" />
+                                        </graphic>
+                                    </Label>
+                                </StackPane>
+                            </JFXRippler>
+                            <JFXRippler fx:id="posteRippler">
+                                <StackPane fx:id="posteBurger" style="-fx-max-height: 30px;-fx-background-color: #00b0ff;-fx-padding: 5px 10px;-fx-background-radius: 3px; -fx-border-radius: 3px;">
+                                    <Label text="Poste" style="-fx-font-size: 14px;-fx-font-weight: 500;">
+                                        <graphic>
+                                            <Icon awesomeIcon="CARET_DOWN" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;" styleClass="tb-option-icon" />
+                                        </graphic>
+                                    </Label>
+                                </StackPane>
+                            </JFXRippler>
+                        </HBox>
+					</rightItems>
+				</JFXToolbar>
+			</VBox>
+		</top>
+
+		<!-- Content Area -->
+		<center>
+			<JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
+				<styleClass>
+					<String fx:value="body" />
+				</styleClass>
+			</JFXDrawer>
+		</center>
+        <bottom>
+            <HBox style="-fx-background-color: #222222;">
+                <Label text="Region: " style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 500;-fx-padding: 5px 2px 5px 12px;">
+                    <graphic>
+                        <Icon awesomeIcon="MAP_MARKER" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;"/>
+                    </graphic>
+                </Label>
+                <Label fx:id="regionName" text="Aucun Selectionné" style="-fx-text-fill: #01A05E; -fx-font-size: 14px; -fx-font-weight: 600;-fx-padding: 5px 12px 5px 0;-fx-border-width: 0 1px 0 0;-fx-border-color: white;"/>
+
+                <Label text="Depart:" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 500;-fx-padding: 5px 2px 5px 12px;-fx-border-width: 0 0 0 1px;-fx-border-color: white;">
+                    <graphic>
+                        <Icon awesomeIcon="CODE_FORK" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;"/>
+                    </graphic>
+                </Label>
+                <Label fx:id="departName" text="Aucun Selectionné" style="-fx-text-fill: #01A05E; -fx-font-size: 14px; -fx-font-weight: 600;-fx-padding: 5px 12px 5px 0;-fx-border-width: 0 1px 0 0;-fx-border-color: white;"/>
+
+                <Label text="Poste:" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 500;-fx-padding: 5px 2px 5px 12px;-fx-border-width: 0 0 0 1px;-fx-border-color: white;">
+                    <graphic>
+                        <Icon awesomeIcon="PAYPAL" size="18px" style="-fx-text-fill: white;-fx-padding: 0 5px 0 0;"/>
+                    </graphic>
+                </Label>
+                <Label fx:id="posteName" text="Aucun Selectionné" style="-fx-text-fill: #01A05E; -fx-font-size: 14px; -fx-font-weight: 600;-fx-padding: 5px 12px 5px 0;"/>
+            </HBox>
+        </bottom>
+	</BorderPane>
+
+	<JFXPopup fx:id="configPopup" styleClass="tool-bar-popup">
+		<JFXListView styleClass="option-list-view" style="-fx-pref-width: 260.0px;-fx-pref-height: 150.0px;">
+            <Label fx:id="params">Paramètres
+                <graphic>
+                    <Icon awesomeIcon="WRENCH" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="save">Sauvegarder
+                <graphic>
+                    <Icon awesomeIcon="SAVE" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="sync">Synchroniser Base de Donnée
+                <graphic>
+                    <Icon awesomeIcon="DATABASE" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="exit">Quitter
+                <graphic>
+                    <Icon awesomeIcon="SIGN_OUT" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+		</JFXListView>
+	</JFXPopup>
+    <JFXPopup fx:id="regionPopup" styleClass="tool-bar-popup">
+        <JFXListView styleClass="option-list-view">
+            <Label fx:id="newRegion">Nouvelle
+                <graphic>
+                    <Icon awesomeIcon="PLUS" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="editRegion">Modifier
+                <graphic>
+                    <Icon awesomeIcon="EDIT" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="removeRegion">Supprimer
+                <graphic>
+                    <Icon awesomeIcon="TRASH" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+        </JFXListView>
+    </JFXPopup>
+    <JFXPopup fx:id="departPopup" styleClass="tool-bar-popup">
+        <JFXListView styleClass="option-list-view">
+            <Label fx:id="newDepart">Nouveau
+                <graphic>
+                    <Icon awesomeIcon="PLUS" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="editDepart">Modifier
+                <graphic>
+                    <Icon awesomeIcon="EDIT" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="removeDepart">Supprimer
+                <graphic>
+                    <Icon awesomeIcon="TRASH" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+        </JFXListView>
+    </JFXPopup>
+    <JFXPopup fx:id="postePopup" styleClass="tool-bar-popup">
+        <JFXListView styleClass="option-list-view">
+            <Label fx:id="newPoste">Nouveau
+                <graphic>
+                    <Icon awesomeIcon="PLUS" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="editPoste">Modifier
+                <graphic>
+                    <Icon awesomeIcon="EDIT" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+            <Label fx:id="removePoste">Supprimer
+                <graphic>
+                    <Icon awesomeIcon="TRASH" size="1.5em" style=";" styleClass="tb-option-icon" />
+                </graphic>
+            </Label>
+        </JFXListView>
+    </JFXPopup>
+
+</StackPane>

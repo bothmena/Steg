@@ -56,6 +56,10 @@ public class Poste extends RecursiveTreeObject<Poste> {
         this("", "", "", false);
     }
 
+    public Poste( String name ) {
+        this(name, "", "", false);
+    }
+
     public Poste(String name, String type, String ptr) {
         this(name, type, ptr, false);
     }
@@ -157,7 +161,13 @@ public class Poste extends RecursiveTreeObject<Poste> {
     }
 
     public Poste getPrevPoste() {
-        return prevPoste;
+
+        try {
+            return this.prevPoste;
+        } catch (NullPointerException e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     public void setPrevPoste(Poste prevPoste) {
@@ -165,7 +175,13 @@ public class Poste extends RecursiveTreeObject<Poste> {
     }
 
     public Poste getNextPoste() {
-        return nextPoste;
+
+        try {
+            return this.nextPoste;
+        } catch (NullPointerException e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     public void setNextPoste(Poste nextPoste) {
@@ -174,5 +190,10 @@ public class Poste extends RecursiveTreeObject<Poste> {
 
     public String getTeleToString() {
         return this.tele ? "Oui" : "Non";
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

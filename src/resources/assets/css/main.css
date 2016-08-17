@@ -1,7 +1,7 @@
 /**
  * Created by Aymen Ben Othmen on 12/08/16.
  */
-.btn, .btn-primary, .btn-info, .btn-danger, .btn-success, .btn-success-sec, .btn-warning, .btn-dark {
+.btn, .btn-primary, .btn-info, .btn-danger, .btn-success, .btn-success-sec, .btn-warning, .btn-dark, .btn-mute {
   -fx-pref-height: 34px;
   -fx-font-size: 14px;
   -fx-text-fill: #E2EAF3; }
@@ -55,6 +55,12 @@
 
 .btn-white:hover {
   -fx-background-color: white; }
+
+.btn-mute {
+  -fx-background-color: GRAY; }
+
+.btn-white:hover {
+  -fx-background-color: #9a9a9a; }
 
 .btn-raised {
   -fx-button-type: RAISED; }
@@ -144,6 +150,85 @@
     -fx-rippler-fill: #0F9D58;
     -fx-mask-type: CIRCLE;
 }*/
+.dialog-pane.root {
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-border-color: #DDDDDD;
+  -fx-min-width: 500px;
+  -fx-border-width: 3px;
+  -fx-padding: 0px; }
+  .dialog-pane.root .dialog {
+    -fx-padding: 0px; }
+  .dialog-pane.root .dialog-header {
+    -fx-padding: 10px 20px;
+    -fx-background-color: #DDDDDD;
+    -fx-alignment: top-center; }
+    .dialog-pane.root .dialog-header .label {
+      -fx-text-fill: #2F65A5;
+      -fx-font-size: 25px; }
+  .dialog-pane.root .dialog-body {
+    -fx-alignment: center;
+    -fx-min-height: 200px;
+    -fx-spacing: 20px;
+    -fx-padding: 30px 20px; }
+  .dialog-pane.root .button-bar * {
+    -fx-background-color: #DDDDDD;
+    -fx-padding: 10px 10px; }
+    .dialog-pane.root .button-bar * .btn-primary {
+      -fx-background-color: #2F65A5; }
+    .dialog-pane.root .button-bar * .btn-primary:hover {
+      -fx-background-color: #3879c6; }
+    .dialog-pane.root .button-bar * .btn-mute {
+      -fx-background-color: GRAY; }
+    .dialog-pane.root .button-bar * .btn-mute:hover {
+      -fx-background-color: #9a9a9a; }
+    .dialog-pane.root .button-bar * .btn-danger {
+      -fx-background-color: #CE584A; }
+    .dialog-pane.root .button-bar * .btn-danger:hover {
+      -fx-background-color: #f76a59; }
+    .dialog-pane.root .button-bar * .button {
+      -fx-font-size: 12px; }
+
+.jfx-dialog-overlay-pane {
+  -fx-background-color: #212121;
+  -fx-opacity: 0.1; }
+
+.dialog-trigger {
+  -fx-background-color: #E2EAF3;
+  -fx-button-type: RAISED;
+  -fx-font-size: 14.0px; }
+
+.jfx-dialog-layout {
+  -fx-padding: 24.0px 24.0px 16.0px 24.0px;
+  -fx-text-fill: rgba(0, 0, 0, 0.87); }
+
+.jfx-layout-heading {
+  -fx-font-size: 20.0px;
+  -fx-font-weight: BOLD;
+  -fx-alignment: center-left;
+  -fx-padding: 5.0 0.0 5.0 0.0; }
+
+.jfx-layout-body .label {
+  -fx-font-size: 14.0px;
+  -fx-pref-width: 400.0px;
+  -fx-wrap-text: true; }
+
+.jfx-layout-actions {
+  -fx-padding: 10px 0 0 0;
+  -fx-alignment: center-right; }
+
+.dialog-confirm {
+  -fx-text-fill: #2F65A5;
+  -fx-background-color: #99C286;
+  -fx-font-weight: BOLD;
+  -fx-padding: 0.7em 0.8em; }
+
+.dialog-cancel {
+  -fx-text-fill: #2F65A5;
+  -fx-background-color: #E2EAF3;
+  -fx-font-weight: BOLD;
+  -fx-padding: 0.7em 0.8em; }
+
 /**
  * JFX Radio Button
  */
@@ -175,7 +260,7 @@
   -fx-opacity: 0.4; }
 
 /**
- * For the main demo sliders
+ * For the com.bothmena demo sliders
  */
 .jfx-slider-style {
   -fx-indicator-position: right; }
@@ -213,6 +298,10 @@
 /**
  * JFX Textfield
  */
+.form-error {
+  -fx-text-fill: #CE584A;
+  -fx-wrap-text: true; }
+
 .jfx-text-field, .jfx-password-field, .jfx-text-area {
   -fx-background-color: transparent;
   -fx-font-weight: BOLD;

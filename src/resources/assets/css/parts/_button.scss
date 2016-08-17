@@ -74,6 +74,14 @@ $hover-factor: 1.2;
 .btn-white:hover {
     -fx-background-color: $white * $hover-factor;
 }
+
+.btn-mute {
+    @extend .btn;
+    -fx-background-color: $mute;
+}
+.btn-white:hover {
+    -fx-background-color: $mute * $hover-factor;
+}
 .btn-raised {
     -fx-button-type: RAISED;
 }
